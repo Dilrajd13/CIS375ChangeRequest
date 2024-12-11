@@ -34,25 +34,43 @@ h1{
 }
 
 button{
-    height: 150px;
+    height: 100px;
     width: 250px;
     background-color: navy;
     font-size: 20px;
 }
 
+.buttonstopofpage{
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    
+    position: absolute;
+    top: 100px;
+    left: 400px;
+
+}
+
+
+
+
+
 
 .faq{
-
-font-size: 14px;
+    
+font-size: 20px;
 
 }
 
 
 
 .backdrop{
+    position: relative;
     
-    
-    height: 250px;
+    left:500px;
+    top: 150px;
+    height: 500px;
     width: 600px;
     background-color: antiquewhite;
     
