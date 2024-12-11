@@ -15,7 +15,7 @@ h1{
     text-align: center;
 
 }
-p{
+.main{
     font-weight: bold;
     font-size: 25PX;
     text-align: center;
@@ -38,4 +38,25 @@ button{
     width: 250px;
     background-color: navy;
     font-size: 20px;
+}
+
+
+.faq{
+
+font-size: 14px;
+
+}
+
+
+
+.backdrop{
+    
+    
+    height: 250px;
+    width: 600px;
+    background-color: antiquewhite;
+    
+    
+       
+    
 }
