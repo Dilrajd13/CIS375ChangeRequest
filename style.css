@@ -13,10 +13,29 @@ header{
 h1{
     
     text-align: center;
-    
-    
 
 }
 p{
+    font-weight: bold;
+    font-size: 25PX;
     text-align: center;
+    position: relative;
+    top: 10px;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 50px;
+    
+}
+
+button{
+    height: 150px;
+    width: 250px;
+    background-color: lightblue;
+    font-size: 20px;
 }
