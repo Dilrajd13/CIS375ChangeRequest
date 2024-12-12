@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <link rel ="stylesheet" href=style.css>
+    
     <head>
     
         <title>  Help </title> 
@@ -11,102 +12,117 @@
             <h1> Change Request System</h1>
             
         </header>
-<form>
+
+
+<form action="form.php" method="post">
+
 <div>
+    
 <label for="Project-name"> Project name</label><br>
-<input type="text" name="Project Name">
+<input type="text" name="Project Name" > <br>
+
 </div>
 
 <div>
-    <label for="Change-name"> Change name</label><br>
-    <input type="text" name="Change Name">
-    </div>
 
-    <div>
-        <label for="Date"> Date</label><br>
-        <input type="text" name="Date">
-        </div>
+<label for="Change-name"> Change name</label><br>
+<input type="text" name="Change Name" > <br>
 
-        <div>
-            <label for="Change-no"> Change No.</label><br>
-            <input type="text" name="Change No.">
-            </div>
+</div>
 
-            <div>
-                <label for="Locationof"> Location</label><br>
-                <input type="text" name="Location">
-                </div>
+<div>
 
-                <div>
-                    <label for="first-name"> First name</label><br>
-                    <input type="text" name="First Name">
-                    </div>
+<label for="Date"> Date</label><br>
+<input type="date" name="Date"> <br>
+        
+</div>
 
-                    <div>
-                        <label for="Last-name"> Last name</label><br>
-                        <input type="text" name="Last name">
-                        </div>
+<label for="Change-no"> Change No.</label><br>
+<input type="text" name="Change No."><br>
 
-                        <div>
-                            <label for="Emailaddress"> Email</label><br>
-                            <input type="text" name="Email">
-                            </div>
+</div>
 
-                            <div>
-                                <label for="Phone-Number"> Phone Number</label><br>
-                                <input type="text" name="Phone Number">
-                                </div>
+<div>
 
-                                <div>
-                                    <label for="Job-Title"> Job Title</label><br>
-                                    <input type="text" name="Job Title">
-                                    </div>
+<br>
+<label for="Locationof"> Location</label><br>
+<input type="text" name="Location"><br>
+
+</div>
+
+<div>
+<label for="first-name"> First name</label><br>
+<input type="text" name="First Name"><br>
+</div>
+                 
+<div>
+<label for="Last-name"> Last name</label><br>
+<input type="text" name="Last name"><br>
+</div>
+
+<div>
+ <label for="Emailaddress"> Email</label><br>
+ <input type="email" name="Email"><br>
+ </div>
+
+<div>
+<label for="Phone-Number"> Phone Number</label><br>
+<input type="tel" name="Phone Number"><br>
+</div>
+
+<div>
+<label for="Job-Title"> Job Title</label><br>
+<input type="text" name="Job Title"><br>
+</div>
 
 
-                                    <div>
-                                        <label for="Request-Category"> Request Category</label><br>
-                                        <input type="text" name="Request Category">
-                                        </div>
-                                        <div>
-<input type="checkbox" id="lowPrio" name="lowPrio" value="Low">
-  <label for="lowPrio"> Low</label><br>
+<div>
+<label for="Request-Category"> Request Category</label><br>
+<input type="text" name="Request Category"><br>
+</div>
 
-  <input type="checkbox" id="mediumPrio" name="mediumPrio" value="Medium">
-  <label for="mediumPrio"> Medium</label><br>
+<div>
+<input type="radio" id="lowPrio" name="Priority" value="Low">
+  <label for="lowPrio"> Low</label>
 
-  <input type="checkbox" id="HighPrio" name="HighPrio" value="High">
-  <label for="HighPrio"> High </label><br>
+  <input type="radio" id="mediumPrio" name="Priority" value="Medium">
+  <label for="mediumPrio"> Medium</label> 
 
-  <input type="checkbox" id="CriticalPrio" name="CriticalPrio" value="Critical">
-  <label for="CriticalPrio"> Critical</label><br>
+  <input type="radio" id="HighPrio" name="Priority" value="High">
+  <label for="HighPrio"> High </label>
+
+  <input type="radio" id="CriticalPrio" name="Priority" value="Critical">
+  <label for="CriticalPrio"> Critical</label><br><br>
 
  
 </div>
-                                            <div>
-                                                <label for="Change-Description"> Change Description</label><br>
-                                                <input type="text" name="Change Description">
-                                                </div>
+<div>
+<label for="Change-Description"> Change Description</label><br>
+<input type="text" name="Change Description"><br>
+</div>
 
-                                                <div>
-                                                    <label for="Reason-Change"> Reason for Change</label><br>
-                                                    <input type="text" name="Reason for Change">
-                                                    </div>
-                                                    <div>
-                                                        <label for="Impact-Change"> Impact</label><br>
-                                                        <input type="text" name="Impact">
-                                                        </div>
-                                                        <div>
-                                                            <label for="Risks-Change"> Risks</label><br>
-                                                            <input type="text" name="Risks">
-                                                            </div>
+<div>
+<label for="Reason-Change"> Reason for Change</label><br>
+<input type="text" name="Reason for Change"><br>
+</div>
+<div>
+<label for="Impact-Change"> Impact</label><br>
+<input type="text" name="Impact"><br>
+</div>
+<div>
+<label for="Risks-Change"> Risks</label><br>
+<input type="text" name="Risks"><br>
+</div>
 
-                                                            <div>
-                                                                <label for="Work-Tools-Required"> Work Tools Required</label><br>
-                                                                <input type="text" name="Work Tools Required">
-                                                                </div>
-                                                                <div> <label for="myfile">Select a file:</label>
-                                                                <input type="file" id="myfile" name="myfile" />
-                                                            </div>
+<div>
+<label for="Work-Tools-Required"> Work Tools Required</label><br>
+<input type="text" name="Work Tools Required"><br>
+</div>
+<div> <label for="myfile">Select a file:</label>
+<input type="file" id="myfile" name="myfile" /> <br><br>
+</div>
+<div><input type="submit" value="Submit"></div>
+                                                            
                                                                 
 
 
@@ -114,7 +130,7 @@
 </form>
 
 
-
+       </body>
 
 
 
