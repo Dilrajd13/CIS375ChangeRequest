@@ -5,7 +5,7 @@
 
 header{
     width: 100%;
-    background-color: navy;
+    background-color: white;
     padding: 25px;
  
 }
@@ -36,7 +36,7 @@ h1{
 button{
     height: 100px;
     width: 250px;
-    background-color: navy;
+    background-color: whitesmoke;
     font-size: 20px;
 }
 
