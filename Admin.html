@@ -18,33 +18,21 @@
                     <th>Change Name</th>
                     <th>Date</th>
                     <th>Priority</th>
-                    <th>Change NO  </th>
-                    <th> Location </th>
-                    <th> First Name </th>
-                    <th> Last Name </th>
-                    <th> Email </th>
-                    <th> Phone Number </th>
-                    <th> Job Title </th>
-                    <th> Change Description </th>
-                    <th> Reason for Change </th>
-                    <th> Impact </th>
-                    <th> Risks </th>
-                    <th> Work Tools Required </th>
-                    <th>Status</th>
-
-
+                    <th>Change No</th>
+                    <th>Location</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Job Title</th>
+                    <th>Description</th>
+                    <th>Reason</th>
+                    <th>Impact</th>
+                    <th>Risks</th>
+                    <th>Tools</th>
                 </tr>
             </thead>
             <tbody id="reportData"></tbody>
-
-
-
-
-
-
-
-
-
         </table>
     </div>
     <script>
@@ -65,13 +53,13 @@
                     <td>${report.first_name}</td>
                     <td>${report.last_name}</td>
                     <td>${report.email}</td>
-                    <td>${report.phone_number}</td>
+                    <td>${report.phone}</td>
                     <td>${report.job_title}</td>
-                    <td>${report.change_description}</td>
-                    <td>${report.reason_for_change}</td>
+                    <td>${report.description}</td>
+                    <td>${report.reason}</td>
                     <td>${report.impact}</td>
                     <td>${report.risks}</td>
-                    <td>${report.work_tools_required}</td>
+                    <td>${report.tools}</td>
                 `;
                 tableBody.appendChild(row);
             });

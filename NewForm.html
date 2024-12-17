@@ -1,136 +1,110 @@
 <!DOCTYPE html>
 <html>
-    <link rel ="stylesheet" href=style.css>
-    
-    <head>
-    
-        <title>  Help </title> 
-        
-       </head>
-       <body> 
-        <header>
-            <h1> Change Request System</h1>
-            
-        </header>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Change Request Form</title>
+</head>
+<body>
+    <header>
+        <h1>Change Request System</h1>
+    </header>
 
+    <form action="/submit-request" method="post" enctype="multipart/form-data">
 
-<form action="/submit" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="project_name">Project Name</label><br>
+            <input type="text" name="project_name" id="project_name" required><br>
+        </div>
 
-<div>
-    
-<label for="Project-name"> Project name</label><br>
-<input type="text" name="Project Name" > <br>
+        <div>
+            <label for="change_name">Change Name</label><br>
+            <input type="text" name="change_name" id="change_name" required><br>
+        </div>
 
-</div>
+        <div>
+            <label for="date">Date</label><br>
+            <input type="date" name="date" id="date" required><br>
+        </div>
 
-<div>
+        <div>
+            <label for="change_no">Change No.</label><br>
+            <input type="text" name="change_no" id="change_no" required><br>
+        </div>
 
-<label for="Change-name"> Change name</label><br>
-<input type="text" name="Change Name" > <br>
+        <div>
+            <label for="location">Location</label><br>
+            <input type="text" name="location" id="location" required><br>
+        </div>
 
-</div>
+        <div>
+            <label for="first_name">First Name</label><br>
+            <input type="text" name="first_name" id="first_name" required><br>
+        </div>
 
-<div>
+        <div>
+            <label for="last_name">Last Name</label><br>
+            <input type="text" name="last_name" id="last_name" required><br>
+        </div>
 
-<label for="Date"> Date</label><br>
-<input type="date" name="Date"> <br>
-        
-</div>
+        <div>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" id="email" required><br>
+        </div>
 
-<label for="Change-no"> Change No.</label><br>
-<input type="text" name="Change No."><br>
+        <div>
+            <label for="phone_number">Phone Number</label><br>
+            <input type="tel" name="phone_number" id="phone_number" required><br>
+        </div>
 
-</div>
+        <div>
+            <label for="job_title">Job Title</label><br>
+            <input type="text" name="job_title" id="job_title" required><br>
+        </div>
 
-<div>
+        <div>
+            <label>Priority</label><br>
+            <input type="radio" id="low" name="priority" value="Low">
+            <label for="low">Low</label>
 
-<br>
-<label for="Locationof"> Location</label><br>
-<input type="text" name="Location"><br>
+            <input type="radio" id="medium" name="priority" value="Medium">
+            <label for="medium">Medium</label>
 
-</div>
+            <input type="radio" id="high" name="priority" value="High">
+            <label for="high">High</label>
 
-<div>
-<label for="first-name"> First name</label><br>
-<input type="text" name="First Name"><br>
-</div>
-                 
-<div>
-<label for="Last-name"> Last name</label><br>
-<input type="text" name="Last name"><br>
-</div>
+            <input type="radio" id="critical" name="priority" value="Critical">
+            <label for="critical">Critical</label><br>
+        </div>
 
-<div>
- <label for="Emailaddress"> Email</label><br>
- <input type="email" name="Email"><br>
- </div>
+        <div>
+            <label for="change_description">Change Description</label><br>
+            <input type="text" name="change_description" id="change_description" required><br>
+        </div>
 
-<div>
-<label for="Phone-Number"> Phone Number</label><br>
-<input type="tel" name="Phone Number"><br>
-</div>
+        <div>
+            <label for="reason_for_change">Reason for Change</label><br>
+            <input type="text" name="reason_for_change" id="reason_for_change" required><br>
+        </div>
 
-<div>
-<label for="Job-Title"> Job Title</label><br>
-<input type="text" name="Job Title"><br>
-</div>
+        <div>
+            <label for="impact">Impact</label><br>
+            <input type="text" name="impact" id="impact" required><br>
+        </div>
 
+        <div>
+            <label for="risks">Risks</label><br>
+            <input type="text" name="risks" id="risks" required><br>
+        </div>
 
+        <div>
+            <label for="work_tools_required">Work Tools Required</label><br>
+            <input type="text" name="work_tools_required" id="work_tools_required" required><br>
+        </div>
 
+        <div>
+            <input type="submit" value="Submit">
+        </div>
 
-<div>
-<label> Priority</label> <br>
-
-<input type="radio" id="lowPrio" name="Priority" value="Low">
-  <label for="lowPrio"> Low</label>
-
-  <input type="radio" id="mediumPrio" name="Priority" value="Medium">
-  <label for="mediumPrio"> Medium</label> 
-
-  <input type="radio" id="HighPrio" name="Priority" value="High">
-  <label for="HighPrio"> High </label>
-
-  <input type="radio" id="CriticalPrio" name="Priority" value="Critical">
-  <label for="CriticalPrio"> Critical</label><br>
-
- 
-</div>
-<div>
-<label for="Change-Description"> Change Description</label><br>
-<input type="text" name="Change Description"><br>
-</div>
-
-<div>
-<label for="Reason-Change"> Reason for Change</label><br>
-<input type="text" name="Reason for Change"><br>
-</div>
-<div>
-<label for="Impact-Change"> Impact</label><br>
-<input type="text" name="Impact"><br>
-</div>
-<div>
-<label for="Risks-Change"> Risks</label><br>
-<input type="text" name="Risks"><br>
-</div>
-
-<div>
-<label for="Work-Tools-Required"> Work Tools Required</label><br>
-<input type="text" name="Work Tools Required"><br>
-</div>
-
-<div><input type="submit" value="Submit"></div>
-                                                            
-                                                                
-
-
-
-</form>
-
-
-       </body>
-
-
-
-
-
+    </form>
+</body>
 </html>
