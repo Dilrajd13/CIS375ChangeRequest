@@ -18,39 +18,26 @@
                     <th>Change Name</th>
                     <th>Date</th>
                     <th>Priority</th>
+                    <th>Change NO  </th>
+                    <th> Location </th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Email </th>
+                    <th> Phone Number </th>
+                    <th> Job Title </th>
+                    <th> Change Description </th>
+                    <th> Reason for Change </th>
+                    <th> Impact </th>
+                    <th> Risks </th>
+                    <th> Work Tools Required </th>
                     <th>Status</th>
+
+
                 </tr>
             </thead>
             <tbody id="reportData"></tbody>
-            <form onsubmit="return validatePassword(event);">
-                <input type="password" id="password" placeholder="Enter password" required>
-                <br>
-                <button type="submit">Submit</button><br>
-            </form>
 
-            <script>
-                // Function to validate password and redirect
-                function validatePassword(event) {
-                    event.preventDefault(); // Prevent form from submitting normally
-        
-                    // Correct password (you can replace this with your desired password)
-                    const correctPassword = "123";
-                    
-                    // Get the user-entered password
-                    const userPassword = document.getElementById("password").value;
-        
-                    // Check if the password matches
-                    if (userPassword === correctPassword) {
-                        // Redirect to another page
-                        window.location.href = "Admin.html"; // Change to your desired page
-                    } else {
-                        // Show an error message
-                        alert("Incorrect password. Please try again.");
-                    }
-        
-                    return false; // Prevent default form submission
-                }
-            </script>
+
 
 
 
@@ -73,6 +60,18 @@
                     <td>${report.change_name}</td>
                     <td>${report.date}</td>
                     <td>${report.priority}</td>
+                    <td>${report.change_no}</td>
+                    <td>${report.location}</td>
+                    <td>${report.first_name}</td>
+                    <td>${report.last_name}</td>
+                    <td>${report.email}</td>
+                    <td>${report.phone_number}</td>
+                    <td>${report.job_title}</td>
+                    <td>${report.change_description}</td>
+                    <td>${report.reason_for_change}</td>
+                    <td>${report.impact}</td>
+                    <td>${report.risks}</td>
+                    <td>${report.work_tools_required}</td>
                 `;
                 tableBody.appendChild(row);
             });
