@@ -1,106 +1,133 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const multer = require('multer');
 const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const db = new sqlite3.Database('./db.sqlite');
 
-const db = new sqlite3.Database('./db.sqlite', (err) => {
-    if (err) console.error(err.message);
-    console.log('Connected to SQLite database.');
-
-    db.run(`CREATE TABLE IF NOT EXISTS requests (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        project_name TEXT NOT NULL,
-        change_name TEXT NOT NULL,
-        date TEXT NOT NULL,
-        change_no TEXT NOT NULL,
-        location TEXT NOT NULL,
-        first_name TEXT NOT NULL,
-        last_name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT,
-        job_title TEXT NOT NULL,
-        request_category TEXT NOT NULL,
-        priority TEXT NOT NULL,
-        description TEXT NOT NULL,
-        reason TEXT NOT NULL,
-        impact TEXT NOT NULL,
-        risks TEXT NOT NULL,
-        tools TEXT NOT NULL,
-        attachment TEXT
-    )`);
-});
-
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname)));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './uploads/');
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname);
-    }
-});
-const upload = multer({ storage });
-
-// Routes
-app.post('/submit', upload.single('myfile'), (req, res) => {
+app.post('/submit-request', (req, res) => {
     const {
-        'Project Name': project_name,
-        'Change Name': change_name,
-        Date: date,
-        'Change No.': change_no,
-        Location: location,
-        'First Name': first_name,
-        'Last name': last_name,
-        Email: email,
-        'Phone Number': phone,
-        'Job Title': job_title,
-        'Request Category': request_category,
-        Priority: priority,
-        'Change Description': description,
-        'Reason for Change': reason,
-        Impact: impact,
-        Risks: risks,
-        'Work Tools Required': tools
+        project_name,
+        change_name,
+        date,
+        change_no,
+        location,
+        first_name,
+        last_name,
+        email,
+        phone_number,
+        job_title,
+        priority,
+        change_description,
+        reason_for_change,
+        impact,
+        risks,
+        work_tools_required
     } = req.body;
 
-    const attachment = req.file ? req.file.path : null;
+    const sql = `
+        INSERT INTO requests (
+            project_name, change_name, date, change_no, location, first_name,
+            last_name, email, phone, job_title, priority, description, reason,
+            impact, risks, tools, status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    const query = `INSERT INTO requests (
-        project_name, change_name, date, change_no, location,
-        first_name, last_name, email, phone, job_title,
-        request_category, priority, description, reason, impact, risks, tools, attachment
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const params = [
+        project_name,
+        change_name,
+        date,
+        change_no,
+        location,
+        first_name,
+        last_name,
+        email,
+        phone_number,
+        job_title,
+        priority,
+        change_description, 
+        reason_for_change,
+        impact,
+        risks,
+        work_tools_required, 
+        'Pending' 
+    ];
 
-    db.run(query, [
-        project_name, change_name, date, change_no, location,
-        first_name, last_name, email, phone, job_title,
-        request_category, priority, description, reason, impact, risks, tools, attachment
-    ], function (err) {
+    db.run(sql, params, function (err) {
         if (err) {
-            console.error(err.message);
-            return res.status(500).send('Error saving request.');
+            console.error("Error saving request:", err.message);
+            return res.status(500).json({ message: "Error saving request", error: err.message });
         }
-        res.send('Request submitted successfully!');
+        res.status(200).json({ message: "Request submitted successfully", id: this.lastID });
     });
 });
 
-app.get('/reports', (req, res) => {
-    db.all(`SELECT * FROM requests`, [], (err, rows) => {
+app.get('/view-requests', (req, res) => {
+    const sql = `
+        SELECT id, project_name, change_no, date, priority, status
+        FROM requests
+        ORDER BY id DESC`;
+    db.all(sql, [], (err, rows) => {
         if (err) {
-            console.error(err.message);
-            return res.status(500).send('Error fetching reports.');
+            console.error("Error fetching requests:", err.message);
+            return res.status(500).json({ message: "Error fetching requests", error: err.message });
         }
-        res.json(rows);
+        res.status(200).json(rows);
     });
 });
 
+app.post('/view-detailed-request', (req, res) => {
+    const { id, passkey } = req.body;
+
+    const ADMIN_PASSKEY = 'securepass123';
+    if (passkey !== ADMIN_PASSKEY) {
+        return res.status(403).json({ message: "Invalid passkey" });
+    }
+
+    const sql = `
+        SELECT *
+        FROM requests
+        WHERE id = ?`;
+
+    db.get(sql, [id], (err, row) => {
+        if (err) {
+            console.error("Error fetching detailed request:", err.message);
+            return res.status(500).json({ message: "Error fetching detailed request", error: err.message });
+        }
+        if (!row) {
+            return res.status(404).json({ message: "Request not found" });
+        }
+        res.status(200).json(row);
+    });
+});
+
+app.post('/update-request-status', (req, res) => {
+    const { id, status, passkey } = req.body;
+
+    const ADMIN_PASSKEY = 'securepass123';
+    if (passkey !== ADMIN_PASSKEY) {
+        return res.status(403).json({ message: "Invalid passkey" });
+    }
+
+    const sql = `
+        UPDATE requests
+        SET status = ?
+        WHERE id = ?`;
+
+    db.run(sql, [status, id], function (err) {
+        if (err) {
+            console.error("Error updating request status:", err.message);
+            return res.status(500).json({ message: "Error updating request status", error: err.message });
+        }
+        res.status(200).json({ message: "Request status updated successfully" });
+    });
+});
+
+const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
